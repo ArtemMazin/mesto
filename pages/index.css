@@ -1,0 +1,26 @@
+@import url(../vendor/normalize.css);
+@import url(../vendor/fonts/fonts.css);
+
+.body {
+  font-family: 'Inter', Arial, sans-serif;
+  color: #FFF;
+  background: #000;
+}
+.wrapper {
+  max-width: 880px;
+  margin: 0 auto;
+}
+.header {
+  
+}
+.header__line {
+  border-bottom: 1px solid #545454;
+  opacity: 0.7;
+}
+.header__logo {
+
+}
+.main {
+}
+.footer {
+}
