@@ -1,0 +1,9 @@
+.profile__add-button {
+  display: flex;
+  box-sizing: border-box;
+  min-width: 150px;
+  padding: 12px 62px 12px 62px;
+  align-self: center;
+  border: 2px solid #fff;
+  border-radius: 2px;
+}
