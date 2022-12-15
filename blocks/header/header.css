@@ -1,20 +1,30 @@
 .header {
-  margin: 45px 0 40px 0;
+  margin: 45px auto 40px auto;
   display: flex;
   flex-direction: column;
   min-height: 74px;
   position: relative;
- }
- 
- .header::before {
-   content: "";
-   display: block;
-   min-height: 74px;
-   width: 100%;
-   position: absolute;
-   top: 0;
-   left: 0;
-   z-index: -1;
-   opacity: 0.7;
-   border-bottom: 1px solid #545454;
- }
+}
+
+.header::before {
+  content: "";
+  display: block;
+  min-height: 74px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.7;
+  border-bottom: 1px solid #545454;
+}
+
+@media (max-width: 320px) {
+  .header {
+    margin: 28px auto 42px auto;
+    min-height: 56px;
+  }
+  .header::before {
+    min-height: 56px;
+  }
+}

@@ -2,3 +2,9 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+@media (max-width: 320px) {
+  .profile__content {
+    justify-content: center;
+  }
+}

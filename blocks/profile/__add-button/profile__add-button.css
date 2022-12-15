@@ -10,3 +10,9 @@
   border-radius: 2px;
   background: url(../../../images/plus.svg) no-repeat center;
 }
+
+@media (max-width: 320px) {
+  .profile__add-button {
+    flex: 1 1 auto;
+  }
+}

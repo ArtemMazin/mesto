@@ -1,4 +1,14 @@
 .header__logo {
+  max-width: 142px;
   display: block;
   align-self: flex-start;
+}
+
+@media (max-width: 320px) {
+  .header__logo {
+    margin: 0 0 0 8px;
+    max-width: 104px;
+    display: block;
+    align-self: flex-start;
+  }
 }
