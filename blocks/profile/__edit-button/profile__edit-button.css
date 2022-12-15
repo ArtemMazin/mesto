@@ -4,8 +4,15 @@
   padding: 0;
   align-self: center;
   box-sizing: border-box;
+  cursor: pointer;
+  transition: 0.3s;
   background: url(../../../images/edit.svg) no-repeat center;
+  background-size: 10px 10px;
   border: 1px solid #fff;
+}
+
+.profile__edit-button:hover {
+  opacity: 0.6;
 }
 
 @media (max-width: 320px) {

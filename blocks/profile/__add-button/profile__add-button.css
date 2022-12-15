@@ -3,16 +3,23 @@
   height: 50px;
   padding: 0;
   display: flex;
-  /* flex: 1 1 auto; */
   box-sizing: border-box;
   align-self: center;
+  cursor: pointer;
+  transition: 0.3s;
   border: 2px solid #fff;
   border-radius: 2px;
   background: url(../../../images/plus.svg) no-repeat center;
+  background-size: 22px 22px;
+}
+
+.profile__add-button:hover {
+  opacity: 0.6;
 }
 
 @media (max-width: 320px) {
   .profile__add-button {
     flex: 1 1 auto;
+    background-size: 16px 16px;
   }
 }
