@@ -1,5 +1,5 @@
-.popup__text {
-  height: 27px;
+.popup__job {
+  height: 34px;
   margin: 0 0 48px 0;
   padding: 0;
   width: 100%;
@@ -12,7 +12,7 @@
 }
 
 @media (max-width: 320px) {
-  .popup__text {
+  .popup__job {
     margin: 0 0 45px 0;
     font-size: 14px;
     line-height: 17px;
