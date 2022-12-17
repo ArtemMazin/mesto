@@ -21,21 +21,12 @@
         <div class="profile__info">
           <div class="profile__description">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="profile__edit-button"></button>
+            <button class="profile__edit-button" type="button"></button>
           </div>
           <p class="profile__job">Исследователь океана</p>
         </div>
       </div>
-      <button class="profile__add-button"></button>
-      <div class="popup">
-        <form class="popup__container">
-          <h2 class="popup__title">Редактировать профиль</h2>
-          <input class="popup__name" type="text" value="Жак-Ив Кусто">
-          <input class="popup__job" type="text" value="Исследователь океана">
-          <input class="popup__button-submit" type="submit" value="Сохранить">
-          <div class="popup__close-btn"></div>
-        </form>
-      </div>
+      <button class="profile__add-button" type="button"></button>
     </section>
     <section class="cards">
       <ul class="cards__items">
@@ -43,42 +34,42 @@
           <img src="./images/karachaevsk.jpg" alt="Карачаевск" class="cards__image">
           <div class="cards__description">
             <h2 class="cards__text">Карачаевск</h2>
-            <button class="cards__like"></button>
+            <button class="cards__like" type="button"></button>
           </div>
         </li>
         <li class="cards__item">
           <img src="./images/elbrus.jpg" alt="Гора Эльбрус" class="cards__image">
           <div class="cards__description">
             <h2 class="cards__text">Гора Эльбрус</h2>
-            <button class="cards__like"></button>
+            <button class="cards__like" type="button"></button>
           </div>
         </li>
         <li class="cards__item">
           <img src="./images/dombai.jpg" alt="Домбай" class="cards__image">
           <div class="cards__description">
             <h2 class="cards__text">Домбай</h2>
-            <button class="cards__like"></button>
+            <button class="cards__like" type="button"></button>
           </div>
         </li>
         <li class="cards__item">
           <img src="./images/elbrus.jpg" alt="Гора Эльбрус" class="cards__image">
           <div class="cards__description">
             <h2 class="cards__text">Гора Эльбрус</h2>
-            <button class="cards__like"></button>
+            <button class="cards__like" type="button"></button>
           </div>
         </li>
         <li class="cards__item">
           <img src="./images/dombai.jpg" alt="Домбай" class="cards__image">
           <div class="cards__description">
             <h2 class="cards__text">Домбай</h2>
-            <button class="cards__like"></button>
+            <button class="cards__like" type="button"></button>
           </div>
         </li>
         <li class="cards__item">
           <img src="./images/karachaevsk.jpg" alt="Карачаево-Черкесия" class="cards__image">
           <div class="cards__description">
             <h2 class="cards__text">Карачаево-Черкесия</h2>
-            <button class="cards__like"></button>
+            <button class="cards__like" type="button"></button>
           </div>
         </li>
       </ul>
@@ -87,6 +78,17 @@
   <footer class="footer wrapper">
     <p class="footer__copyright">© 2022 Mesto Russia</p>
   </footer>
+  <div class="popup">
+    <div class="popup__container">
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <form name="popup">
+        <input class="popup__name" type="text" value="Жак-Ив Кусто">
+        <input class="popup__job" type="text" value="Исследователь океана">
+        <button class="popup__button-submit" type="submit">Сохранить</button>
+      </form>
+      <button class="popup__close-btn" type="button"></button>
+    </div>
+  </div>
   <script src="scripts/index.js"></script>
 </body>
 

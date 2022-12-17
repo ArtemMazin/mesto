@@ -11,6 +11,7 @@
   text-align: center;
   color: #fff;
   background: #000;
+  border: none;
   border-radius: 2px;
 }
 .popup__button-submit:hover {

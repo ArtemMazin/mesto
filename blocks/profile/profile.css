@@ -7,6 +7,6 @@
 
 @media (max-width: 426px) {
   .profile {
-    margin: 0 0 36px 0;
+    margin-bottom: 36px;
   }
 }

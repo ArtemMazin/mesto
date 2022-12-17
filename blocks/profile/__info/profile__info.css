@@ -1,5 +1,6 @@
 .profile__info {
   align-self: center;
+  max-width: 336px;
 }
 
 @media (max-width: 534px) {

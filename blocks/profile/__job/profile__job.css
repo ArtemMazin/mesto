@@ -7,7 +7,7 @@
 
 @media (max-width: 534px) {
   .profile__job {
-    margin: 7px 0 34px 0;
+    margin-bottom: 32px;
     font-size: 14px;
     line-height: 17px;
   }
