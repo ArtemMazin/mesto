@@ -2,7 +2,7 @@
   align-self: center;
 }
 
-@media (max-width: 320px) {
+@media (max-width: 534px) {
   .profile__info {
     text-align: center;
   }

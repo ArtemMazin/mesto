@@ -17,7 +17,13 @@
   opacity: 0.6;
 }
 
-@media (max-width: 320px) {
+@media (max-width: 684px) {
+  .profile__add-button {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 426px) {
   .profile__add-button {
     flex: 1 1 auto;
     background-size: 16px 16px;

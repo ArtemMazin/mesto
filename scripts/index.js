@@ -1,34 +1,47 @@
 'use strict'
 
-const modal = document.querySelector('.popup'),
-  openModalBtn = document.querySelector('.profile__edit-button'),
-  closeModalBtn = modal.querySelector('.popup__close-btn');
+// ----------------------------Модальное окно---------------------------------------------
+
+const body = document.querySelector('.body'),
+  modal = body.querySelector('.popup'),
+  openModalBtn = body.querySelector('.profile__edit-button'),
+  closeModalBtn = modal.querySelector('.popup__close-btn'),
+  nameInput = modal.querySelector('.popup__name'),
+  jobInput = modal.querySelector('.popup__job'),
+  nameProfile = body.querySelector('.profile__name'),
+  jobProfile = body.querySelector('.profile__job');
+
 
 function openModal() {
   modal.classList.add('popup_opened');
+  body.style.overflow = 'hidden';
 }
 function closeModal() {
   modal.classList.remove('popup_opened');
+  body.style.overflow = '';
 }
 
 openModalBtn.addEventListener('click', openModal);
-closeModalBtn.addEventListener('click', closeModal);
 
-// -----------------------------------------------------------------------------------------
+modal.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeModal();
+  }
+});
+modal.addEventListener('click', (e) => {
+  if (e.target === modal || e.target === closeModalBtn) {
+    closeModal();
+  }
+})
 
-const formElement = document.querySelector('.popup'),
-  nameInput = formElement.querySelector('.popup__name'),
-  jobInput = formElement.querySelector('.popup__job'),
-  nameProfile = document.querySelector('.profile__name'),
-  jobProfile = document.querySelector('.profile__job');
-
-function handleFormSubmit(evt) {
-  evt.preventDefault();
+function handleFormSubmit(e) {
+  e.preventDefault();
   nameProfile.textContent = nameInput.value;
   jobProfile.textContent = jobInput.value;
+  closeModal();
 }
 
-formElement.addEventListener('submit', handleFormSubmit);
+modal.addEventListener('submit', handleFormSubmit);
 
 // ------------------------------------------------------------------------------
 
