@@ -5,8 +5,8 @@
 const modal = document.querySelector('.popup'),
   openModalBtn = document.querySelector('.profile__edit-button'),
   closeModalBtn = modal.querySelector('.popup__close-btn'),
-  nameInput = modal.querySelector('.popup__name'),
-  jobInput = modal.querySelector('.popup__job'),
+  nameInput = modal.querySelector('.popup__input_type_name'),
+  jobInput = modal.querySelector('.popup__input_type_job'),
   nameProfile = document.querySelector('.profile__name'),
   jobProfile = document.querySelector('.profile__job');
 
