@@ -3,8 +3,10 @@
   flex-wrap: wrap;
 }
 
-@media (max-width: 425px) {
+@media (max-width: 690px) {
   .profile__content {
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
   }
 }

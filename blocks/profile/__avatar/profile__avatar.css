@@ -7,14 +7,9 @@
   object-fit: cover;
 }
 
-@media (max-width: 534px) {
+@media (max-width: 690px) {
   .profile__avatar {
-    margin: 0;
-  }
-}
-
-@media (max-width: 452px) {
-  .profile__avatar {
-    margin: 0 auto 26px auto;
+    margin-right: 0;
+    margin-bottom: 26px;
   }
 }

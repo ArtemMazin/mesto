@@ -5,8 +5,9 @@
   flex-wrap: wrap;
 }
 
-@media (max-width: 426px) {
+@media (max-width: 690px) {
   .profile {
+    flex-direction: column;
     margin-bottom: 36px;
   }
 }
