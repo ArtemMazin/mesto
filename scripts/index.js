@@ -10,17 +10,22 @@ const modal = document.querySelector('.popup'),
   nameProfile = document.querySelector('.profile__name'),
   jobProfile = document.querySelector('.profile__job');
 
-function openModal() {
-  modal.classList.add('popup_opened');
-  nameInput.value = nameProfile.textContent;
-  jobInput.value = jobProfile.textContent;
+function openModal(modalName) {
+  modalName.classList.add('popup_opened');
 }
-function closeModal() {
-  modal.classList.remove('popup_opened');
+function closeModal(modalName) {
+  modalName.classList.remove('popup_opened');
 }
 
-openModalBtn.addEventListener('click', openModal);
-closeModalBtn.addEventListener('click', closeModal);
+openModalBtn.addEventListener('click', () => {
+  openModal(modal);
+  nameInput.value = nameProfile.textContent;
+  jobInput.value = jobProfile.textContent;
+});
+
+closeModalBtn.addEventListener('click', () => {
+  closeModal(modal);
+});
 
 function handleFormSubmit(e) {
   e.preventDefault();
@@ -33,7 +38,7 @@ modal.addEventListener('submit', handleFormSubmit);
 
 // ------------------------------------------------------------------------------
 
-const cardTemplate = document.querySelector('#card').content,
+const cardTemplate = document.querySelector('#card-template').content,
       cardItems = document.querySelector('.cards__items'),
       initialCards = [
         {
@@ -76,5 +81,19 @@ initialCards.forEach((card) => {
   cardItems.append(cardElement); 
 })
 
+// ------------------------------------------------------------------------------------
 
+const modalCards = document.querySelector('#popup-cards'),
+      openModalCardsBtn = document.querySelector('.profile__add-button'),
+      closeModalCardsBtn = modalCards.querySelector('#popup-cards__close-btn'),
+      nameCardsInput = modalCards.querySelector('#nameCardsInput'),
+      linkCardsInput = modalCards.querySelector('#linkCardsInput');
+
+openModalCardsBtn.addEventListener('click', () => {
+  openModal(modalCards);
+});
+
+closeModalCardsBtn.addEventListener('click', () => {
+  closeModal(modalCards);
+});
 
