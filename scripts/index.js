@@ -73,8 +73,7 @@ const modalCards = document.querySelector('#popup-cards'),
   openModalCardsBtn = document.querySelector('.profile__add-button'),
   nameCardsInput = modalCards.querySelector('#name-cards__input'),
   linkCardsInput = modalCards.querySelector('#link-cards__input'),
-  closeModalCardsBtn = modalCards.querySelector('#popup-cards__close-btn'),
-  buttonLike = cardItems.querySelectorAll('.cards__like');
+  closeModalCardsBtn = modalCards.querySelector('#popup-cards__close-btn');
 
 openModalCardsBtn.addEventListener('click', () => {
   openModal(modalCards);
@@ -91,6 +90,15 @@ function createCard(card) {
 
   cardElement.querySelector('.cards__text').textContent = card.name;
   cardElement.querySelector('.cards__image').src = card.link;
+
+  // // лайки
+  // cardElement.querySelector('.cards__like').addEventListener('click', function(e) {
+  //     e.target.classList.toggle('cards__like_active');
+  // })
+  // // удаление
+  // cardElement.querySelector('.cards__remove-icon').addEventListener('click', function(e) {
+  //   e.target.closest('.cards__item').remove();
+  // })
 
   return cardElement;
 }
@@ -123,6 +131,36 @@ modalCards.addEventListener('submit', handleFormSubmitTwo);
 
 // -------------Лайки-----------------------------------------------
 
+function likeCard() {
+  cardItems.addEventListener('click', function (e) {
+
+    const buttonLike = cardItems.querySelectorAll('.cards__like');
+
+    buttonLike.forEach((item) => {
+      if (e.target == item) {
+        item.classList.toggle('cards__like_active');
+      }
+    })
+  })
+}
+
+likeCard();
+
+// -----------------Удаление карточки----------------------------------------
+
+function removeCard() {
+  cardItems.addEventListener('click', function (e) {
+
+    const buttonRemove = cardItems.querySelectorAll('.cards__remove-icon');
+
+    buttonRemove.forEach((item) => {
+      if (e.target == item) {
+        e.target.closest('.cards__item').remove();
+      }
+    })
+  })
+}
+removeCard()
 
 
 
