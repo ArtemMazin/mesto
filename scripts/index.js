@@ -2,11 +2,11 @@
 
 // ----------------------------Модальное окно---------------------------------------------
 
-const modal = document.querySelector('.popup'),
-  openModalBtn = document.querySelector('.profile__edit-button'),
-  closeModalBtn = modal.querySelector('.popup__close-btn'),
-  nameInput = modal.querySelector('.popup__input_type_name'),
-  jobInput = modal.querySelector('.popup__input_type_job'),
+const modalProfile = document.querySelector('#popup-profile'),
+  buttonOpenModalProfile = document.querySelector('.profile__edit-button'),
+  buttonCloseModalProfile = modalProfile.querySelector('.popup__close-btn'),
+  nameInput = modalProfile.querySelector('.popup__input_type_name'),
+  jobInput = modalProfile.querySelector('.popup__input_type_job'),
   nameProfile = document.querySelector('.profile__name'),
   jobProfile = document.querySelector('.profile__job');
 
@@ -17,51 +17,51 @@ function closeModal(modalName) {
   modalName.classList.remove('popup_opened');
 }
 
-openModalBtn.addEventListener('click', () => {
-  openModal(modal);
+buttonOpenModalProfile.addEventListener('click', () => {
+  openModal(modalProfile);
   nameInput.value = nameProfile.textContent;
   jobInput.value = jobProfile.textContent;
 });
 
-closeModalBtn.addEventListener('click', () => {
-  closeModal(modal);
+buttonCloseModalProfile.addEventListener('click', () => {
+  closeModal(modalProfile);
 });
 
-function handleFormSubmit(e) {
+function handleFormProfileSubmit(e) {
   e.preventDefault();
   nameProfile.textContent = nameInput.value;
   jobProfile.textContent = jobInput.value;
-  closeModal(modal);
+  closeModal(modalProfile);
 }
 
-modal.addEventListener('submit', handleFormSubmit);
+modalProfile.addEventListener('submit', handleFormProfileSubmit);
 
-// ------------------------------------------------------------------------------
+// -----------------5 Спринт-------------------------------------------------------------
 
 const initialCards = [
   {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    name: 'Москва',
+    link: 'https://images.unsplash.com/photo-1512495039889-52a3b799c9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80'
   },
   {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    name: 'Сочи',
+    link: 'https://images.unsplash.com/photo-1589783383891-585baca1e191?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80'
   },
   {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    name: 'Нижний Новгород',
+    link: 'https://images.unsplash.com/photo-1642318507562-f669802d0f80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80'
   },
   {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    name: 'Санкт-Петербург',
+    link: 'https://images.unsplash.com/photo-1554844344-c34ea04258c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=327&q=80'
   },
   {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    name: 'Казань',
+    link: 'https://images.unsplash.com/photo-1504615458222-979e04d69a27?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1176&q=80'
   },
   {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    name: 'Владивосток',
+    link: 'https://images.unsplash.com/photo-1634545042913-fd935f23b144?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80'
   }
 ];
 
@@ -70,16 +70,17 @@ const initialCards = [
 const modalCards = document.querySelector('#popup-cards'),
   cardTemplate = document.querySelector('#card-template').content,
   cardItems = document.querySelector('.cards__items'),
-  openModalCardsBtn = document.querySelector('.profile__add-button'),
-  nameCardsInput = modalCards.querySelector('#name-cards__input'),
-  linkCardsInput = modalCards.querySelector('#link-cards__input'),
-  closeModalCardsBtn = modalCards.querySelector('#popup-cards__close-btn');
+  buttonOpenModalCards = document.querySelector('.profile__add-button'),
+  buttonCloseModalCards = modalCards.querySelector('#popup-cards__close-btn'),
+  nameCardInput = modalCards.querySelector('#name-cards__input'),
+  linkCardInput = modalCards.querySelector('#link-cards__input'),
+  modalImage = document.querySelector('#popup-image');
 
-openModalCardsBtn.addEventListener('click', () => {
+buttonOpenModalCards.addEventListener('click', () => {
   openModal(modalCards);
 });
 
-closeModalCardsBtn.addEventListener('click', () => {
+buttonCloseModalCards.addEventListener('click', () => {
   closeModal(modalCards);
 });
 
@@ -89,47 +90,60 @@ function createCard(card) {
   const cardElement = cardTemplate.querySelector('.cards__item').cloneNode(true);
 
   cardElement.querySelector('.cards__text').textContent = card.name;
+  cardElement.querySelector('.cards__image').alt = card.name;
   cardElement.querySelector('.cards__image').src = card.link;
 
-  // // лайки
+  // лайки
   // cardElement.querySelector('.cards__like').addEventListener('click', function(e) {
   //     e.target.classList.toggle('cards__like_active');
   // })
-  // // удаление
+  // удаление
   // cardElement.querySelector('.cards__remove-icon').addEventListener('click', function(e) {
   //   e.target.closest('.cards__item').remove();
   // })
+
+  function zoomImage() {
+    modalImage.querySelector('.popup__image').src = card.link;
+    modalImage.querySelector('.popup__description').textContent = card.name;
+    openModal(modalImage);
+  }
+  cardElement.querySelector('.cards__image-container').addEventListener('click', zoomImage);
+
+  modalImage.querySelector('.popup__close-btn').addEventListener('click', () => {
+    closeModal(modalImage)
+  })
 
   return cardElement;
 }
 
 // -------------Загрузка карточек при старте-------------------------------------------------------------
 
-function initialStart() {
+function createInitialCards() {
   initialCards.forEach((card) => {
     cardItems.append(createCard(card));
   })
 }
-initialStart();
+createInitialCards();
 
 // --------------Создание новой карточки в виде объекта, добавление в массив и на страницу-------------------------------
-const newCard = {
-  name: nameCardsInput.value,
-  link: linkCardsInput.value
-};
 
-function handleFormSubmitTwo(e) {
+function handleFormCardsSubmit(e) {
   e.preventDefault();
 
-  initialCards.unshift(newCard);
-  cardItems.prepend(createCard(initialCards[0]));
+  const newCard = {
+    name: nameCardInput.value,
+    link: linkCardInput.value
+  };
+
+  initialCards.push(newCard);
+  cardItems.prepend(createCard(initialCards[initialCards.length - 1]));
 
   closeModal(modalCards);
 }
 
-modalCards.addEventListener('submit', handleFormSubmitTwo);
+modalCards.addEventListener('submit', handleFormCardsSubmit);
 
-// -------------Лайки-----------------------------------------------
+// -----------------Лайки через делегирование-----------------------------------------------
 
 function likeCard() {
   cardItems.addEventListener('click', function (e) {
@@ -143,24 +157,22 @@ function likeCard() {
     })
   })
 }
-
 likeCard();
 
-// -----------------Удаление карточки----------------------------------------
+// -----------------Удаление карточки через делегирование----------------------------------------
 
 function removeCard() {
   cardItems.addEventListener('click', function (e) {
 
     const buttonRemove = cardItems.querySelectorAll('.cards__remove-icon');
 
-    buttonRemove.forEach((item) => {
+    buttonRemove.forEach((item, i) => {
       if (e.target == item) {
         e.target.closest('.cards__item').remove();
+        // удаляю карточку из массива
+        initialCards.splice(i, 1);
       }
     })
   })
 }
 removeCard()
-
-
-

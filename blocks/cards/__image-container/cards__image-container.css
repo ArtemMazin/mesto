@@ -1,0 +1,11 @@
+.cards__image-container::before {
+  content: "";
+  width: 282px;
+  height: 282px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+/* Чтобы было видно иконки удаления на светлых фото */
