@@ -3,12 +3,13 @@
 // ----------------------------Модальное окно---------------------------------------------
 
 const modalProfile = document.querySelector('#popup-profile'),
+  formProfile = document.querySelector('#form-profile'),
   buttonOpenModalProfile = document.querySelector('.profile__edit-button'),
-  buttonCloseModalProfile = modalProfile.querySelector('.popup__close-btn'),
   nameInput = modalProfile.querySelector('.popup__input_type_name'),
   jobInput = modalProfile.querySelector('.popup__input_type_job'),
   nameProfile = document.querySelector('.profile__name'),
-  jobProfile = document.querySelector('.profile__job');
+  jobProfile = document.querySelector('.profile__job'),
+  closeButtons = document.querySelectorAll('.popup__close-btn');
 
 function openModal(modalName) {
   modalName.classList.add('popup_opened');
@@ -23,8 +24,9 @@ buttonOpenModalProfile.addEventListener('click', () => {
   jobInput.value = jobProfile.textContent;
 });
 
-buttonCloseModalProfile.addEventListener('click', () => {
-  closeModal(modalProfile);
+closeButtons.forEach((button) => {
+  const popup = button.closest('.popup');
+  button.addEventListener('click', () => closeModal(popup));
 });
 
 function handleFormProfileSubmit(e) {
@@ -34,7 +36,7 @@ function handleFormProfileSubmit(e) {
   closeModal(modalProfile);
 }
 
-modalProfile.addEventListener('submit', handleFormProfileSubmit);
+formProfile.addEventListener('submit', handleFormProfileSubmit);
 
 // -----------------5 Спринт-------------------------------------------------------------
 
@@ -68,20 +70,19 @@ const initialCards = [
 // ------------------------------------------------------------------------------------
 
 const modalCards = document.querySelector('#popup-cards'),
+  formCards = document.querySelector('#form-cards'),
   cardTemplate = document.querySelector('#card-template').content,
   cardItems = document.querySelector('.cards__items'),
   buttonOpenModalCards = document.querySelector('.profile__add-button'),
-  buttonCloseModalCards = modalCards.querySelector('#popup-cards__close-btn'),
   nameCardInput = modalCards.querySelector('#name-cards__input'),
   linkCardInput = modalCards.querySelector('#link-cards__input'),
-  modalImage = document.querySelector('#popup-image');
+  modalImage = document.querySelector('#popup-image'),
+  imageCard = modalImage.querySelector('.popup__image'),
+  descriptionCard = modalImage.querySelector('.popup__description');
+
 
 buttonOpenModalCards.addEventListener('click', () => {
   openModal(modalCards);
-});
-
-buttonCloseModalCards.addEventListener('click', () => {
-  closeModal(modalCards);
 });
 
 //-------Клонирование карточки-----------------------------------------------
@@ -94,24 +95,21 @@ function createCard(card) {
   cardElement.querySelector('.cards__image').src = card.link;
 
   // лайки
-  // cardElement.querySelector('.cards__like').addEventListener('click', function(e) {
-  //     e.target.classList.toggle('cards__like_active');
-  // })
+  cardElement.querySelector('.cards__like').addEventListener('click', function(e) {
+      e.target.classList.toggle('cards__like_active');
+  })
   // удаление
-  // cardElement.querySelector('.cards__remove-icon').addEventListener('click', function(e) {
-  //   e.target.closest('.cards__item').remove();
-  // })
+  cardElement.querySelector('.cards__remove-icon').addEventListener('click', function(e) {
+    e.target.closest('.cards__item').remove();
+  })
 
   function zoomImage() {
-    modalImage.querySelector('.popup__image').src = card.link;
-    modalImage.querySelector('.popup__description').textContent = card.name;
+    imageCard.src = card.link;
+    imageCard.alt = card.name;
+    descriptionCard.textContent = card.name;
     openModal(modalImage);
   }
   cardElement.querySelector('.cards__image-container').addEventListener('click', zoomImage);
-
-  modalImage.querySelector('.popup__close-btn').addEventListener('click', () => {
-    closeModal(modalImage)
-  })
 
   return cardElement;
 }
@@ -125,7 +123,7 @@ function createInitialCards() {
 }
 createInitialCards();
 
-// --------------Создание новой карточки в виде объекта, добавление в массив и на страницу-------------------------------
+// --------------Создание новой карточки в виде объекта и добавление на страницу-------------------------------
 
 function handleFormCardsSubmit(e) {
   e.preventDefault();
@@ -134,45 +132,10 @@ function handleFormCardsSubmit(e) {
     name: nameCardInput.value,
     link: linkCardInput.value
   };
+  cardItems.prepend(createCard(newCard));
 
-  initialCards.push(newCard);
-  cardItems.prepend(createCard(initialCards[initialCards.length - 1]));
-
+  e.target.reset()
   closeModal(modalCards);
 }
 
-modalCards.addEventListener('submit', handleFormCardsSubmit);
-
-// -----------------Лайки через делегирование-----------------------------------------------
-
-function likeCard() {
-  cardItems.addEventListener('click', function (e) {
-
-    const buttonLike = cardItems.querySelectorAll('.cards__like');
-
-    buttonLike.forEach((item) => {
-      if (e.target == item) {
-        item.classList.toggle('cards__like_active');
-      }
-    })
-  })
-}
-likeCard();
-
-// -----------------Удаление карточки через делегирование----------------------------------------
-
-function removeCard() {
-  cardItems.addEventListener('click', function (e) {
-
-    const buttonRemove = cardItems.querySelectorAll('.cards__remove-icon');
-
-    buttonRemove.forEach((item, i) => {
-      if (e.target == item) {
-        e.target.closest('.cards__item').remove();
-        // удаляю карточку из массива
-        initialCards.splice(i, 1);
-      }
-    })
-  })
-}
-removeCard()
+formCards.addEventListener('submit', handleFormCardsSubmit);
